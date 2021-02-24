@@ -1,0 +1,4 @@
+#!/bin/bash
+base=$PWD/tests/mp1
+python $base/mp1.py --test-path $base $@ | tee mp1test.log
+exit $?
