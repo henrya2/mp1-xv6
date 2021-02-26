@@ -112,6 +112,8 @@ found:
   memset(p->context, 0, sizeof *p->context);
   p->context->eip = (uint)forkret;
 
+  memset(p->syscount, 0, sizeof(p->syscount));
+
   return p;
 }
 
@@ -295,6 +297,7 @@ wait(void)
         p->name[0] = 0;
         p->killed = 0;
         p->state = UNUSED;
+        memset(p->syscount, 0, sizeof(p->syscount));
         release(&ptable.lock);
         return pid;
       }
